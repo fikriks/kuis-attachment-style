@@ -2,10 +2,13 @@
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
 
+type Category = 'S' | 'AN' | 'AV' | 'D';
+type Scores = Record<Category, number>;
+
 const AttachmentStyleQuiz = () => {
   const [currentScreen, setCurrentScreen] = useState('welcome');
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [scores, setScores] = useState({ S: 0, AN: 0, AV: 0, D: 0 });
+  const [scores, setScores] = useState<Scores>({ S: 0, AN: 0, AV: 0, D: 0 });
 
   const questions = [
     {
@@ -227,7 +230,7 @@ const AttachmentStyleQuiz = () => {
     }
   };
 
-  const handleAnswer = (category) => {
+  const handleAnswer = (category: Category) => {
     setScores(prev => ({
       ...prev,
       [category]: prev[category] + 1
@@ -244,9 +247,9 @@ const AttachmentStyleQuiz = () => {
     }
   };
 
-  const getDominantCategory = () => {
+  const getDominantCategory = (): Category => {
     const maxScore = Math.max(...Object.values(scores));
-    return Object.keys(scores).find(key => scores[key] === maxScore);
+    return (Object.keys(scores).find(key => scores[key as Category] === maxScore)) as Category;
   };
 
   const getChartData = () => {
@@ -303,7 +306,7 @@ const AttachmentStyleQuiz = () => {
               <p className="text-sm font-medium text-gray-600 mb-3">4 Tipe Attachment Style</p>
               <div className="flex flex-wrap gap-2">
                 {Object.keys(attachmentProfiles).map((key) => {
-                  const profile = attachmentProfiles[key];
+                  const profile = attachmentProfiles[key as Category];
                   return (
                     <div key={key} className="px-4 py-2 rounded-full text-sm font-medium"
                       style={{ backgroundColor: profile.bgColor, color: profile.color }}>
@@ -360,7 +363,7 @@ const AttachmentStyleQuiz = () => {
 
               <div className="space-y-3">
                 {currentQ.options.map((option, index) => (
-                  <button key={index} onClick={() => handleAnswer(option.category)}
+                  <button key={index} onClick={() => handleAnswer(option.category as Category)}
                     className="w-full text-left p-5 rounded-2xl border-2 border-gray-100 hover:border-gray-300 hover:shadow-md transition-all duration-200 group">
                     <div className="flex items-center">
                       <div className="flex-shrink-0 w-8 h-8 rounded-xl flex items-center justify-center font-bold mr-4 text-white group-hover:scale-110 transition-transform"
