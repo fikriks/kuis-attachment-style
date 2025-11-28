@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Cell } from 'recharts';
+import Image from 'next/image';
 
 type Category = 'S' | 'AN' | 'AV' | 'D';
 type Scores = Record<Category, number>;
@@ -275,8 +276,8 @@ const AttachmentStyleQuiz = () => {
           <div className="w-full max-w-lg bg-white rounded-3xl shadow-lg p-8 md:p-10">
             <div className="flex justify-between items-start mb-6">
               <div>
-                <h1 className="text-4xl font-bold mb-2" style={{ color: '#2D3142' }}>Attachment Quiz</h1>
-                <p className="text-gray-500 text-lg">Kenali profil kelekatan Anda</p>
+                <h1 className="text-4xl font-bold mb-2" style={{ color: '#2D3142' }}>AttachMe</h1>
+                <p className="text-gray-500 text-lg">Yuk, Temukan Gaya Kelekatanmu!</p>
               </div>
               <button className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: '#FDB91B' }}>
                 <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -286,7 +287,7 @@ const AttachmentStyleQuiz = () => {
             </div>
 
             <div className="bg-gray-50 rounded-2xl p-5 mb-6">
-              <div className="flex items-center mb-3">
+              {/*<div className="flex items-center mb-3">
                 <div className="w-10 h-10 rounded-xl flex items-center justify-center mr-3" style={{ backgroundColor: '#8B5CF6' }}>
                   <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -296,25 +297,20 @@ const AttachmentStyleQuiz = () => {
                   <p className="font-semibold" style={{ color: '#2D3142' }}>15 Pertanyaan</p>
                   <p className="text-sm text-gray-500">Waktu ± 5-7 menit</p>
                 </div>
-              </div>
+              </div>*/}
               <p className="text-sm text-gray-600 leading-relaxed">
-                Temukan gaya kelekatan Anda dalam hubungan interpersonal. Tidak ada jawaban benar atau salah, jawablah sejujur-jujurnya.
+                Pahami pola hubunganmu melalui kuis attachment style (gaya kelekatan) yang diadaptasi dari teori John Bowlby dan Mary Ainsworth.
+                <br /> <br /> Diadaptasi dari: Rena Goldman
               </p>
             </div>
 
-            <div className="mb-8">
-              <p className="text-sm font-medium text-gray-600 mb-3">4 Tipe Attachment Style</p>
-              <div className="flex flex-wrap gap-2">
-                {Object.keys(attachmentProfiles).map((key) => {
-                  const profile = attachmentProfiles[key as Category];
-                  return (
-                    <div key={key} className="px-4 py-2 rounded-full text-sm font-medium"
-                      style={{ backgroundColor: profile.bgColor, color: profile.color }}>
-                      {profile.shortName}
-                    </div>
-                  );
-                })}
+            <div className="text-xs text-center text-gray-400 mt-6 mb-6">
+              <div className="flex justify-center mb-4">
+                <Image src="/avatar.jpg" alt="Avatar" width={100} height={100} className="rounded-full" />
               </div>
+              Dikembangkan oleh: <br />
+              Myrna Apriany Lestari <br />
+              Universitas Kuningan • 2025 <br />
             </div>
 
             <button onClick={() => setCurrentScreen('quiz')}
@@ -323,9 +319,6 @@ const AttachmentStyleQuiz = () => {
               Mulai Kuis
             </button>
 
-            <p className="text-xs text-center text-gray-400 mt-6">
-              Berdasarkan Attachment Theory dalam psikologi
-            </p>
           </div>
         </div>
       </div>
