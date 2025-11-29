@@ -274,16 +274,10 @@ const AttachmentStyleQuiz = () => {
       <div className="min-h-screen" style={{ backgroundColor: '#E8E5F2' }}>
         <div className="min-h-screen flex items-center justify-center p-4">
           <div className="w-full max-w-lg bg-white rounded-3xl shadow-lg p-8 md:p-10">
-            <div className="flex justify-between items-start mb-6">
-              <div>
-                <h1 className="text-4xl font-bold mb-2" style={{ color: '#2D3142' }}>AttachMe</h1>
-                <p className="text-gray-500 text-lg">Yuk, Temukan Gaya Kelekatanmu!</p>
+            <div className="mb-6">
+              <div className="flex justify-center">
+                <Image src="/logo.png" alt="AttachMe Logo" width={280} height={112} className="mb-2" />
               </div>
-              <button className="w-14 h-14 rounded-2xl flex items-center justify-center" style={{ backgroundColor: '#FDB91B' }}>
-                <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-              </button>
             </div>
 
             <div className="bg-gray-50 rounded-2xl p-5 mb-6">
@@ -314,9 +308,12 @@ const AttachmentStyleQuiz = () => {
             </div>
 
             <button onClick={() => setCurrentScreen('quiz')}
-              className="w-full py-4 rounded-2xl font-semibold text-lg text-white shadow-md hover:shadow-lg transition-all"
+              className="w-full py-4 rounded-2xl font-semibold text-lg text-white shadow-md hover:shadow-lg transition-all flex items-center justify-center"
               style={{ backgroundColor: '#FDB91B' }}>
-              Mulai Kuis
+              Yuk, Kenali Style Kelekatan Anda
+              <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+              </svg>
             </button>
 
           </div>
